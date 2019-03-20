@@ -1,0 +1,74 @@
+#ACST890 Take Home Quiz 1
+
+#Question 1
+
+#assumptions
+#Face value mature in 2 years' time
+F <- 100
+
+#coupon rate p.a.
+c <- 0.02
+
+#number of payments: 4 semi-annually
+n <- seq(0.5,4,0.5)
+
+#interest rate compounded continuously, assuming interest rate is constant
+y <- 0.08
+
+
+PVFace = function(n,y,f){f*exp(-y*n)}
+PVCoupon = function(c,y,n=seq(0.5,4,0.5)){sum(c*exp(-y*(0:n)))}
+
+bondprice = PVFace(1,0.08,100) + PVCoupon(100*(0.02/2),0.08,1)
+bondprice
+
+#Question 3
+#set working directory to file location of the dataset
+#a)
+dataset <- read.csv("singapore.economy.csv", header = T)
+attach(dataset)
+
+#b)
+datacleaned <- na.omit(dataset)
+attach(datacleaned)
+
+#c)
+plot(time, gdp, xlab = "Time", ylab = "GDP(%)", main = "Singapore GDP growth")
+
+#d)
+gdp1 <- mean(gdp[period==1])
+gdp2 <- mean(gdp[period==2])
+gdp3 <- mean(gdp[period==3])
+
+stat.table <- data.frame(
+  period = 1:3,
+  avegdp = c(gdp1, gdp2, gdp3)
+)
+stat.table
+
+#e)
+datapairs <- datacleaned[c(3:10)]
+pairs(datapairs)
+
+#f)
+plot(exp, gdp)
+gdp.exp.lm <- lm(gdp ~ exp)
+abline(gdp.exp.lm$coefficients, col="blue")
+summary(gdp.exp.lm)
+
+#g)
+gdp.lm <- lm(gdp ~ exp + epg + hpr + oil + gdpus + crd)
+gdp.lm
+summary(gdp.lm)
+
+#h)
+gdplevel <- quantile(gdp, 0.05)
+crisis <- gdp<=gdplevel
+gdpstate <- data.frame(crisis)
+datacleaned$state <- factor(crisis, levels = c(FALSE, TRUE), labels = "0","1")
+
+#Training Data
+train <- datacleaned$state[time<=2007]
+
+logit <- glm(datacleaned$state ~ datacleaned$bci, family = binomial, data = train)
+summary(logit)
