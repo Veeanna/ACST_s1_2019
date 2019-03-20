@@ -15,7 +15,6 @@ n <- seq(0.5,4,0.5)
 #interest rate compounded continuously, assuming interest rate is constant
 y <- 0.08
 
-
 PVFace = function(n,y,f){f*exp(-y*n)}
 PVCoupon = function(c,y,n=seq(0.5,4,0.5)){sum(c*exp(-y*(0:n)))}
 
