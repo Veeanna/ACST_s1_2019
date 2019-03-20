@@ -72,3 +72,4 @@ train <- datacleaned$state[time<=2007]
 
 logit <- glm(datacleaned$state ~ datacleaned$bci, family = binomial, data = train)
 summary(logit)
+confusionMatrix(logit, train)
