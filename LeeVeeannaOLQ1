@@ -1,0 +1,26 @@
+#Question 1
+#a)
+#!/bin/bash
+#file name is saved as triplet-stop.sh
+#To read the script
+curl https://www.staff.hs-mittweida.de/~wuenschi/data/media/compbiolbook/chapter-10-shell-programming--triplet-stop.sh -o triplet-stop.sh
+cat triplet*sh
+#To check if the file has been downloaded
+ls -1 *sh
+
+#b)
+egrep "(taa){9}" triplet-stop.sh
+
+#Question 2
+#a)
+#!/bin/bash
+#file name is saved as tutes.txt
+#To read the file
+curl https://ilearn.mq.edu.au/pluginfile.php/5682137/mod_resource/content/2/tutes.txt -o tutes.txt
+cat tutes*txt
+#to check if the file has been uploaded 
+ls -1 *txt
+
+#b)
+sort tutes.txt | uniq > uniqtutes.txt
+cat uniqtutes*txt
