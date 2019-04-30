@@ -1,0 +1,44 @@
+#12.1
+#!/bin/bash
+#file name is saved as structure.pdb
+#To read the script
+curl -o structure.pdb https://www.staff.hs-mittweida.de/~wuenschi/data/media/compbiolbook/chapter-11-regex--structure.pdb
+cat structure.pdb
+#To check if the file has been downloaded
+ls -1 *pdb
+
+echo "$structure.pdb" | tr Beisel Weisel
+
+#12.2
+#To delete the first 3 lines:
+sed -i 1,3d structure.pdb
+#To check the file:
+cat structure.pdb
+
+#12.3
+sed -n 5,10p structure.pdb
+
+#12.4
+sed ‘/MET/d’ ./structure.pdb
+
+#12.5
+grep "HELIX" structure.pdb | grep "ILE"
+
+#12.6
+sed --in-place '/^H/s/.*/&***/' structure.pdb
+cat structure.pdb
+
+#12.7
+sed -i '/SEQRES/c\SEQ' structure.pdb
+cat structure.pdb
+
+#12.8
+#!/bin/bash
+#file name is saved as jabberwocky.txt
+#To read the script
+curl -o jabberwocky.txt https://raw.githubusercontent.com/Veeanna/ACST_s1_2019/master/jabberwocky.txt
+#To check the content of the file
+cat jabberwocky.txt
+
+#To delete empty lines
+sed '/^[[:space:]]*$/d' jabberwocky.txt
