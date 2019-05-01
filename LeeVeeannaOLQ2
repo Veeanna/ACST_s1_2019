@@ -9,7 +9,9 @@ cat structure.pdb
 #To check if the file has been downloaded
 ls -1 *pdb
 
-echo "$structure.pdb" | tr Beisel Weisel
+#To change Beisel to Weisel
+sed -i 's/Beisel/Weisel/g' structure.pdb
+cat structure.pdb
 
 #12.2
 #To delete the first 3 lines:
