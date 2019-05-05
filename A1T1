@@ -88,3 +88,13 @@ print(date(5,3))
 print(date(1,5))
 print(date(12,6))
 print(date(20,3))
+
+#Question 6
+p = 100
+r = 0.05
+t = 5
+
+Import math
+def pv(p,r,t):
+    print(p*(math.e**(r*t)))
+pv(p,r,t)
