@@ -1,5 +1,6 @@
 #ACST829 Assignment Task 1
 
+#This code is written for Python3
 #Question 1
 #To test out the replace code to use:
 string = "hucl huck huk huck"
@@ -11,6 +12,47 @@ response = requests.get(‘https://raw.githubusercontent.com/Veeanna/ACST_s1_201
 print(response.text)
 twain = response.text
 print(twain.replace("Huck", "HucK"))
+
+#Question 2
+Import sys
+def writeln(x=''): 
+    if sys.hexversion < 0x03000000: 
+        x = unicode(x) 
+        x = x.encode('utf-8') 
+    else: 
+        x = str(x) 
+    sys.stdout.write(x) 
+    sys.stdout.write('\n') 
+    sys.stdout.flush() 
+
+def write(x=''): 
+    if (sys.hexversion < 0x03000000): 
+        x = unicode(x) 
+        x = x.encode('utf-8') 
+    else: 
+        x = str(x) 
+    sys.stdout.write(x) 
+    sys.stdout.flush()
+
+write(’Hi, ’) 
+write(sys.argv[1]) 
+writeln(’. How are you?’)
+
+write('python')
+writeln('python')
+
+write('@!&^%')
+writeln('@!&^%')
+
+write('1234')
+writeln('1234')
+
+write('Bob')
+writeln('Bob')
+
+write('Alice Bob')
+writeln('Alice Bob')
+
 
 #Question 3
 def leap_year(y):
